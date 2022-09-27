@@ -23,21 +23,6 @@ body {
   float: right;
   text-decoration: none;
 }
-.dsa {
-  background: rgba(248, 252, 3, 0.7);
-  backdrop-filter: blur(5px);
-  border-radius: 30px;
-  border: none;
-}
-.asda {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(5px);
-  border: none;
-}
-.sd {
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(5px);
-}
 .gose {
   float: right;
   animation: mover 2s infinite alternate;
@@ -49,4 +34,126 @@ body {
   100% {
     transform: translateY(-40px);
   }
+}
+.header {
+  width: 100%;
+  /* height: 100vh; */
+  background: #00122e;
+  position: relative;
+}
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: #182842;
+  width: 120px;
+  padding: 10px 0;
+}
+nav .logo {
+  color: white;
+  font-size: 55px;
+  width: 56px;
+  display: block;
+  margin: auto;
+}
+nav ul {
+  margin-top: 80px;
+}
+nav ul li {
+  list-style: none;
+  font-size: 28px;
+}
+nav ul li i {
+  color: white;
+  width: 50px;
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  opacity: 0.5s;
+  border-radius: 10px;
+  transform: opacity 0.5s, background 0.5s;
+}
+nav ul li i:hover {
+  opacity: 1;
+  background: #4d6181;
+}
+.active {
+  opacity: 1;
+  background: #4d6181;
+}
+.asc {
+  margin-left: 120px;
+  padding: 0 2.5%;
+  color: white;
+  font-size: 28px;
+}
+.top-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 25px 0;
+}
+.top-icons i {
+  width: 25px;
+  margin-left: 40px;
+}
+.row {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.col-1 {
+  flex-basis: 65%;
+}
+.col-2 {
+  flex-basis: 33%;
+}
+.host-img {
+  width: 100%;
+  border-radius: 15px;
+}
+.ove {
+  transform: rotate(90deg);
+}
+.contarols {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contarols i {
+  width: 40px;
+  margin: 20px 10px;
+  transition: transform 0.5s;
+}
+.contarols i .call-icon {
+  width: 70px;
+}
+.contarols i:hover {
+  transform: translateY(-10px);
+}
+.joined {
+  background: #182842;
+  border-radius: 15px;
+  padding: 10px 50px 15px;
+}
+.joined div {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 30px;
+}
+.joined img {
+  width: 100%;
+  border-radius: 10px;
+}
+.invite {
+  background: #182842;
+  border-radius: 15px;
+  padding: 10px 50px 15px;
+  margin-top: 15px;
+}
+.invite img {
+  width: 50px;
+  margin-left: 5px;
+  border-radius: 50%;
 }
