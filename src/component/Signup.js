@@ -10,8 +10,8 @@ const Signup = () => {
   const [allUser, setallUser] = useState([]);
   const [Error, setError] = useState("");
   useEffect(() => {
-    if (localStorage.wwtbam) {
-      let detail = JSON.parse(localStorage.wwtbam);
+    if (localStorage.call) {
+      let detail = JSON.parse(localStorage.call);
       setallUser(detail);
     } else {
       setallUser([]);
@@ -27,19 +27,19 @@ const Signup = () => {
       score: "0",
     },
     onSubmit: (values) => {
-      let debo = JSON.parse(localStorage.getItem("wwtbam"));
+      let debo = JSON.parse(localStorage.getItem("call"));
       setallUser(debo);
       if (values) {
-        if (allUser === "") {
+        if (allUser == "") {
           setallUser(allUser.push(values));
-          localStorage.setItem("wwtbam", JSON.stringify(allUser));
+          localStorage.setItem("call", JSON.stringify(allUser));
           navigate("/Signin");
         } else {
           for (const a of allUser) {
             let User = values;
             if (a["email"] !== User.email && a["password"] !== User.password) {
               setallUser(allUser.push(values));
-              localStorage.setItem("wwtbam", JSON.stringify(allUser));
+              localStorage.setItem("call", JSON.stringify(allUser));
               navigate("/Signin");
             } else {
               if (

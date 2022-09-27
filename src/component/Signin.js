@@ -10,8 +10,8 @@ const Signup = () => {
   const [allUser, setallUser] = useState([]);
   const [Error, setError] = useState("");
   useEffect(() => {
-    if (localStorage.wwtbam) {
-      let detail = JSON.parse(localStorage.wwtbam);
+    if (localStorage.call) {
+      let detail = JSON.parse(localStorage.call);
       setallUser(detail);
     } else {
       setallUser([]);
@@ -23,7 +23,7 @@ const Signup = () => {
       password: "",
     },
     onSubmit: (values) => {
-      let debo = JSON.parse(localStorage.getItem("wwtbam"));
+      let debo = JSON.parse(localStorage.getItem("call"));
       if (values) {
         for (const a of debo) {
           let User = values;
