@@ -1,14 +1,12 @@
+@import url("http://fonts.cdnfonts.com/css/algeria");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif, "poppins", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  transition: 0.5s;
+  font-family: "Algeria";
 }
 body {
   background: #020019;
-  overflow: hidden;
   transition: 0.5s;
 }
 .asd {
@@ -16,144 +14,4 @@ body {
   backdrop-filter: blur(5px);
   border-radius: 10px;
   border: none;
-}
-.sig {
-  color: #1dcf9f;
-  opacity: 0.8;
-  float: right;
-  text-decoration: none;
-}
-.gose {
-  float: right;
-  animation: mover 2s infinite alternate;
-}
-@keyframes mover {
-  0% {
-    transform: translateY(-40px);
-  }
-  100% {
-    transform: translateY(-40px);
-  }
-}
-.header {
-  width: 100%;
-  height: 100vh;
-  background: #00122e;
-  position: relative;
-}
-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background: #182842;
-  width: 120px;
-  padding: 10px 0;
-}
-nav .logo {
-  color: white;
-  font-size: 55px;
-  width: 56px;
-  display: block;
-  margin: auto;
-}
-nav ul {
-  margin-top: 80px;
-}
-nav ul li {
-  list-style: none;
-  font-size: 28px;
-}
-nav ul li i {
-  color: white;
-  width: 50px;
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  opacity: 0.5s;
-  border-radius: 10px;
-  transform: opacity 0.5s, background 0.5s;
-}
-nav ul li i:hover {
-  opacity: 1;
-  background: #4d6181;
-}
-.active {
-  opacity: 1;
-  background: #4d6181;
-}
-.asc {
-  margin-left: 120px;
-  padding: 0 2.5%;
-  color: white;
-  font-size: 28px;
-}
-.top-icons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 25px 0;
-}
-.top-icons i {
-  width: 25px;
-  margin-left: 40px;
-}
-.rows {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
-}
-.col-1 {
-  flex-basis: 65%;
-}
-.col-2 {
-  flex-basis: 33%;
-}
-.host-img {
-  width: 100%;
-  border-radius: 15px;
-}
-.ove {
-  transform: rotate(90deg);
-}
-.contarols {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.contarols i {
-  width: 40px;
-  margin: 20px 10px;
-  transition: transform 0.5s;
-}
-.contarols i .call-icon {
-  width: 70px;
-}
-.contarols i:hover {
-  transform: translateY(-10px);
-}
-.joined {
-  background: #182842;
-  border-radius: 15px;
-  padding: 10px 50px 15px;
-}
-.joined div {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 30px;
-}
-.joined img {
-  width: 100%;
-  border-radius: 10px;
-}
-.invite {
-  background: #182842;
-  border-radius: 15px;
-  padding: 10px 50px 15px;
-  margin-top: 15px;
-}
-.invite img {
-  width: 50px;
-  margin-left: 5px;
-  border-radius: 50%;
 }
