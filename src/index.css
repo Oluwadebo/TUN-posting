@@ -6,12 +6,17 @@
   font-family: "Algeria";
 }
 body {
-  background: #020019;
+  background: #f0f0f0;
   transition: 0.5s;
 }
-.asd {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  border: none;
+.rig {
+  border-radius: 30% 30% 0% 0%;
+}
+.let {
+  border-radius: 0% 0% 5% 90%;
+  margin-left: -14px;
+}
+.ded {
+  border-radius: 0% 0% 90% 0%;
+  margin-right: -14px;
 }
