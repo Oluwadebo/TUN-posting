@@ -9,6 +9,7 @@ import NotFound from "./component/NotFound";
 import Nysc from "./component/Nysc";
 import Signup from "./component/Signup";
 import Signin from "./component/Signin";
+import Posting from "./component/Posting";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Signup />} />
           <Route path="/Signin" element={<Signin />} />
+          <Route path="/posting" element={<Posting />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
