@@ -20,3 +20,6 @@ body {
   border-radius: 0% 0% 90% 0%;
   margin-right: -14px;
 }
+.buton{
+  cursor: pointer;
+}

@@ -8,6 +8,7 @@ import {
 import NotFound from "./component/NotFound";
 import Nysc from "./component/Nysc";
 import Signup from "./component/Signup";
+import Signin from "./component/Signin";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Signup />} />
+          <Route path="/Signin" element={<Signin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
