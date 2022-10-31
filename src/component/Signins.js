@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Signin = () => {
+const Signins = () => {
     const navigate = useNavigate();
     const [allUser, setallUser] = useState([]);
     const [Error, setError] = useState("");
@@ -22,27 +22,45 @@ const Signin = () => {
     let number = new RegExp(`(?=.*[0-9])`);
     const formik = useFormik({
         initialValues: {
+            firstname: "",
+            Lastname: "",
             email: "",
             password: "",
+            account: "0",
+            score: "0",
         },
         onSubmit: (values) => {
             let debo = JSON.parse(localStorage.getItem("nysc"));
+            setallUser(debo);
             if (values) {
-                for (const a of debo) {
-                    let User = values;
-                    if (a["email"] === User.email && a["password"] === User.password) {
-                        localStorage.signinEmail = JSON.stringify(User.email);
-                        localStorage.users = JSON.stringify(a);
-                        navigate("/Process");
-                    } else {
-                        let err =
-                            "User-Not-Found, Please check for mistakes and try again.";
-                        setError(err);
+                if (allUser == "") {
+                    setallUser(allUser.push(values));
+                    localStorage.setItem("nysc", JSON.stringify(allUser));
+                    navigate("/Signin");
+                } else {
+                    for (const a of allUser) {
+                        let User = values;
+                        if (a["email"] !== User.email) {
+                            setallUser(allUser.push(values));
+                            localStorage.setItem("nysc", JSON.stringify(allUser));
+                            navigate("/Signin");
+                        } else if (a["email"] === User.email) {
+                            let err = "email-already-in-use";
+                            setError(err);
+                        }
                     }
                 }
             }
         },
         validationSchema: yup.object({
+            firstname: yup
+                .string()
+                .required("This field is required")
+                .min(4, "must be greater than three"),
+            Lastname: yup
+                .string()
+                .required("This field is required")
+                .min(3, "must be greater than two"),
             email: yup
                 .string()
                 .required("This field is required")
@@ -53,7 +71,7 @@ const Signin = () => {
                 .matches(lower, "Must include lowerCase letter")
                 .matches(upper, "Must include upperCase letter")
                 .matches(number, "Must include a number")
-                .min(5, "password is weak, must be greater than 5 charaters"),
+                .min(5, "must be greater than 5 charaters"),
         }),
     });
     const toggle = useRef();
@@ -74,11 +92,11 @@ const Signin = () => {
     return (
         <>
             <div className="container">
-                <div className="row mx-auto my-5">
+                <div className="row mx-auto mt-4">
                     <div className="shadow col-12 col-md-8 mx-auto px-4 pb-3 asd">
                         <h2 className="m-4">
                             <b>
-                                <i>SIGN-IN</i>
+                                <i>Create an account</i>
                             </b>
                         </h2>
                         <p>
@@ -86,6 +104,48 @@ const Signin = () => {
                         </p>
                         <form action="" onSubmit={formik.handleSubmit}>
                             <div className="form-floating">
+                                <input
+                                    type="text"
+                                    placeholder="Your firstname"
+                                    className={
+                                        formik.errors.firstname && formik.touched.firstname
+                                            ? "form-control is-invalid"
+                                            : "form-control"
+                                    }
+                                    onChange={formik.handleChange}
+                                    style={{ backgroundColor: "#F5F7FA" }}
+                                    name="firstname"
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.touched.firstname && (
+                                    <div style={{ color: "red" }} className="my-2">
+                                        {formik.errors.firstname}
+                                    </div>
+                                )}
+                                <label>&#x1F464;&nbsp; Your firstname</label>
+                            </div>
+                            <div className="form-floating my-3">
+                                <input
+                                    type="text"
+                                    placeholder="Your Lastname"
+                                    className={
+                                        formik.errors.Lastname && formik.touched.Lastname
+                                            ? "form-control is-invalid"
+                                            : "form-control"
+                                    }
+                                    onChange={formik.handleChange}
+                                    style={{ backgroundColor: "#F5F7FA" }}
+                                    name="Lastname"
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.touched.Lastname && (
+                                    <div style={{ color: "red" }} className="my-2">
+                                        {formik.errors.Lastname}
+                                    </div>
+                                )}
+                                <label>&#x1F464;&nbsp; Your Lastname</label>
+                            </div>
+                            <div className="form-floating my-3">
                                 <input
                                     type="email"
                                     placeholder="Your email"
@@ -122,6 +182,7 @@ const Signin = () => {
                                     name="password"
                                     onBlur={formik.handleBlur}
                                 />
+
                                 <div
                                     id="toggle"
                                     ref={toggle}
@@ -138,22 +199,22 @@ const Signin = () => {
                                 <label>&#x1F512;&nbsp; Your password</label>
                                 <button
                                     type="submit"
-                                    className="btn btn-outline-secondary form-control py-3 mt-3 asd"
+                                    className="btn btn-outline-secondary form-control py-3 mt-3"
                                 >
-                                    Sign-In
+                                    Sign-Up
                                 </button>
                             </div>
                             <div className="row mt-3">
                                 <div className="col-md-12">
                                     <div className="row">
                                         <div className="col-8">
-                                            <p style={{ opacity: "0.6" }}>Don't have an account?</p>
+                                            <p style={{ opacity: "0.6" }}>Already have an account?</p>
                                         </div>
                                         <div className="col-4">
                                             <p>
                                                 <b>
-                                                    <Link to="/Signins" className="sig">
-                                                        Sign-Up
+                                                    <Link to="/Signin" className="sig">
+                                                        Sign-In
                                                     </Link>
                                                 </b>
                                             </p>
@@ -169,4 +230,4 @@ const Signin = () => {
     );
 }
 
-export default Signin
+export default Signins

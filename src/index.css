@@ -20,9 +20,27 @@ body {
   border-radius: 0% 0% 90% 0%;
   margin-right: -14px;
 }
-.tp{
+.tp {
   border-top: 4px solid green;
 }
-.buton{
+.buton {
   cursor: pointer;
+}
+.sig {
+  color: green;
+  opacity: 0.8;
+  float: right;
+  text-decoration: none;
+}
+.gose {
+  float: right;
+  animation: mover 2s infinite alternate;
+}
+@keyframes mover {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(-40px);
+  }
 }
