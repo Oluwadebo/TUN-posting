@@ -1,18 +1,27 @@
-import React from 'react'
+import React,{ useEffect, useState, } from 'react'
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Processing = () => {
     const navigate = useNavigate();
     const [allUser, setallUser] = useState([]);
+    const [currentuser, setcurrentuser] = useState("");
+    const [currentuserdetails, setcurrentuserdetails] = useState({});
+    const [customer, setcustomer] = useState([]);
     useEffect(() => {
-        if (localStorage.nysc) {
-            let detail = JSON.parse(localStorage.nysc);
-            setallUser(detail);
+        if (localStorage.nysc && localStorage.signinEmail && localStorage.users) {
+            let AllUser = JSON.parse(localStorage.nysc);
+            setallUser(JSON.parse(localStorage.nysc));
+            setcurrentuser(JSON.parse(localStorage.signinEmail));
+            setcurrentuserdetails(JSON.parse(localStorage.users));
+            let email = JSON.parse(localStorage.users).email;
+            let index = JSON.parse(localStorage.nysc).findIndex(
+                (x) => x.email === email
+            );
+            setcustomer(AllUser[index]);
         } else {
-            setallUser([]);
+            navigate("/Signin");
         }
     }, []);
     const formik = useFormik({
@@ -30,8 +39,10 @@ const Processing = () => {
             degree: "",
         },
         onSubmit: (values) => {
-            const newobj = [...allUser, values];
-            localStorage.setItem("nysc", JSON.stringify(newobj));
+            let email = currentuserdetails.email;
+            let index = allUser.findIndex((x) => x.email == email);
+            setallUser({...allUser[index].process.push(values)});
+            localStorage.setItem("nysc", JSON.stringify(allUser));
             navigate("/posting");
         },
         validationSchema: yup.object({
@@ -49,14 +60,15 @@ const Processing = () => {
         }),
     });
     const exit = () => {
-        navigate("/");
+        localStorage.removeItem("signinEmail");
+        navigate("/Signin");
     }
     const print = () => {
         navigate("/posting");
     }
     return (
         <>
-            <div className="container tp">
+            <div className="container tp mb-5">
                 <form action="" onSubmit={formik.handleSubmit}>
                     <div className="row">
                         <div className="col-12 col-md-6 my-md-3 my-1">

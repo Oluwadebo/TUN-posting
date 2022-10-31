@@ -152,7 +152,7 @@ const Signin = () => {
                                         <div className="col-4">
                                             <p>
                                                 <b>
-                                                    <Link to="/Signins" className="sig">
+                                                    <Link to="/Signup" className="sig">
                                                         Sign-Up
                                                     </Link>
                                                 </b>

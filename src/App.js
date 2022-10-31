@@ -7,11 +7,11 @@ import {
 } from "react-router-dom";
 import NotFound from "./component/NotFound";
 import Nysc from "./component/Nysc";
-import Signup from "./component/Signup";
+import Home from "./component/Home";
 import Process from "./component/Processing";
 import Posting from "./component/Posting";
 import Signin from "./component/Signin";
-import Signins from "./component/Signins";
+import Signup from "./component/Signup";
 
 function App() {
   return (
@@ -19,9 +19,9 @@ function App() {
       <Nysc />
       <Router>
         <Routes>
-          <Route path="/" element={<Signup />} />
+          <Route path="/" element={<Home />} />
           <Route path="/Signin" element={<Signin />} />
-          <Route path="/Signins" element={<Signins />} />
+          <Route path="/Signup" element={<Signup />} />
           <Route path="/Process" element={<Process />} />
           <Route path="/posting" element={<Posting />} />
           <Route path="*" element={<NotFound />} />
