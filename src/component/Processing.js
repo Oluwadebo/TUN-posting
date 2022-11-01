@@ -1,4 +1,4 @@
-import React,{ useEffect, useState, } from 'react'
+import React, { useEffect, useState, } from 'react'
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,9 @@ const Processing = () => {
             navigate("/Signin");
         }
     }, []);
+    const states = ["Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT - Abuja", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"]
+    let ab = Math.floor(Math.random() * states.length);
+    let posti = states[ab];
     const formik = useFormik({
         initialValues: {
             surname: "",
@@ -33,15 +36,16 @@ const Processing = () => {
             nation: "",
             dob: "",
             school: "",
-            maritas: "",
+            marital: "",
             course: "",
             grade: "",
             degree: "",
+            posting: posti,
         },
         onSubmit: (values) => {
             let email = currentuserdetails.email;
             let index = allUser.findIndex((x) => x.email == email);
-            setallUser({...allUser[index].process.push(values)});
+            setallUser({ ...allUser[index].process.push(values) });
             localStorage.setItem("nysc", JSON.stringify(allUser));
             navigate("/posting");
         },
@@ -53,7 +57,7 @@ const Processing = () => {
             nation: yup.string().required("This field is required").min(4, "must be greater than four"),
             dob: yup.string().required("This field is required").min(4, "must be greater than four"),
             school: yup.string().required("This field is required").min(5, "must be greater than four"),
-            maritas: yup.string().required("This field is required"),
+            marital: yup.string().required("This field is required"),
             course: yup.string().required("This field is required").min(3, "must be greater than three"),
             grade: yup.string().required("This field is required").min(4, "must be greater than three"),
             degree: yup.string().required("This field is required").min(4, "must be greater than three"),
@@ -259,17 +263,17 @@ const Processing = () => {
                         <div className="col-12 col-md-6  my-md-3 my-1">
                             <div className="row">
                                 <div className="col-3 col-md-4 my-2">
-                                    <label>MARITA STATUS</label>
+                                    <label>MARITAL STATUS</label>
                                 </div>
                                 <div className="col-9 col-md-8">
                                     <select
                                         className={
-                                            formik.errors.maritas && formik.touched.maritas
+                                            formik.errors.marital && formik.touched.marital
                                                 ? "form-control is-invalid"
                                                 : "form-control"
                                         }
                                         onChange={formik.handleChange}
-                                        name="maritas"
+                                        name="marital"
                                         onBlur={formik.handleBlur}
                                         style={{ backgroundColor: "#F5F7FA" }}
                                     >
@@ -278,9 +282,9 @@ const Processing = () => {
                                         <option value="MARRIED">MARRIED</option>
                                         <option value="DIVORCED">DIVORCED</option>
                                     </select>
-                                    {formik.touched.maritas && (
+                                    {formik.touched.marital && (
                                         <div style={{ color: "red" }} className="my-2">
-                                            {formik.errors.maritas}
+                                            {formik.errors.marital}
                                         </div>
                                     )}
                                 </div>

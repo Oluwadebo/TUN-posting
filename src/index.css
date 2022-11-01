@@ -44,3 +44,6 @@ body {
     transform: translateY(-40px);
   }
 }
+.sta{
+  text-transform: uppercase;
+}
