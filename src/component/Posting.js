@@ -33,7 +33,7 @@ const Posting = () => {
     navigate("/Signin");
   }
   const print = () => {
-    
+    window.print()
   }
   const back = () => {
     navigate("/Process");
